@@ -2,10 +2,12 @@ HEMEMDIR = $(CURDIR)/lib/
 TIMER = ./lib/timer.o
 CC = gcc
 CFLAGS = -g -Wall -O3
+CFLAGS += -DBENCH_DIR=\"$(CURDIR)\"
+
 INCLUDES = -I../linux/usr/include
 LIBS = -lm -lpthread
 
-default: gups-pebs gups-random gups-hotset-move
+default: gups-pebs gups-random gups-hotset-move gups
 
 all: gups-pebs gups-random gups-simple gups-lru gups-lru-swap gups-hotset-move #gups
 

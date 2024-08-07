@@ -124,7 +124,9 @@ static void *do_gups(void *arguments)
 
     if ((i + 1) % BATCH == 0) {
         gettimeofday(&checktime, NULL);
-        performancefile = fopen("./data/performance.txt", "w");
+        char performance_file_path[1024];
+        snprintf(performance_file_path, sizeof(performance_file_path), "%s/data/performance.txt", BENCH_DIR);
+        performancefile = fopen(performance_file_path, "w");
         
         if (!performancefile) {
             perror("fopen");
